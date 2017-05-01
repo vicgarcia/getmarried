@@ -1,0 +1,6 @@
+# exclude virtual environment
+env/*
+
+# exclude .pyc files
+*.pyc
+
