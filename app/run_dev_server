@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# this script is used to run a development server on a vagrant instance
+# for more info on my vagrant setups, check out https://github.com/vicgarcia/nomadic
+
+# change into the application source directory
+cd /home/ubuntu/getmarried
+
+# run django dev server
+sudo /home/ubuntu/getmarried/env/bin/python /home/ubuntu/getmarried/manage.py runserver 192.168.33.44:80 --settings app.development
+
