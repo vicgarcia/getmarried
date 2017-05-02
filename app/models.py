@@ -1,7 +1,6 @@
 from django.db.models import (
         Model, DateTimeField, CharField, IntegerField, TextField, EmailField
     )
-from django.contrib.postgres.fields import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -19,5 +18,5 @@ class Gift(Model):
     email = EmailField()
     order = CharField(max_length=250)   # stripe order id
     amount = IntegerField()             # stripe returns amounts as cents
-    raw = JSONField()                   # save the entire stripe response
+    raw = TextField()                   # save the entire stripe response
 
