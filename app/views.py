@@ -27,3 +27,11 @@ def gift(request):
     # return json response
     return JsonResponse({})
 
+
+def sms(request):
+    ''' handle incoming sms postback from plivo '''
+    sender = request.POST['From']
+    message = request.POST['Text']
+    # resend the message to us
+    return HttpResponse('Message received', status=200)
+
