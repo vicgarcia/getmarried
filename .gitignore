@@ -4,3 +4,6 @@ env/*
 # exclude .pyc files
 *.pyc
 
+# exclude dev sqlite db
+db.sqlite3
+
