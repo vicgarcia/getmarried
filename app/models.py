@@ -1,22 +1,21 @@
-from django.db.models import (
-        Model, DateTimeField, CharField, IntegerField, TextField, EmailField
-    )
-from phonenumber_field.modelfields import PhoneNumberField
+from django.db import models
 
 
-class RSVP(Model):
-    timestamp = DateTimeField(auto_now_add=True)
-    name = CharField(max_length=250)
-    guests = IntegerField()
-    note = TextField(null=False, blank=True)
-    phone = PhoneNumberField()
+
+class RSVP(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=254)
+    phone = models.CharField(max_length=10)
+    guests = models.IntegerField()
+    note = models.TextField(null=False, blank=True)
 
 
-class Gift(Model):
-    timestamp = DateTimeField(auto_now_add=True)
-    name = CharField(max_length=250)
-    email = EmailField()
-    order = CharField(max_length=250)   # stripe order id
-    amount = IntegerField()             # stripe returns amounts as cents
-    raw = TextField()                   # save the entire stripe response
+class Gift(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=254)
+    email = models.EmailField(max_length=254)
+    note = models.TextField(null=False, blank=True)
+    order = models.CharField(max_length=250)   # stripe order id
+    amount = models.IntegerField()             # stripe returns amounts as cents
+    raw = models.TextField()                   # save the entire stripe response
 
