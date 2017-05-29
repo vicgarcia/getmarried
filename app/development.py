@@ -1,16 +1,16 @@
 import os
 
+# https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 SECRET_KEY = 'replace-this-key-in-production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ 'vicg4rcia.dev' ]
 
 
 # Application definition
@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -41,6 +41,17 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages"
+            ],
+        },
     },
 ]
 
@@ -62,18 +73,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    { 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator' },
+    { 'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator' },
+    { 'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator' },
+    { 'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator' },
 ]
 
 
@@ -95,3 +98,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
