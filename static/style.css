@@ -1,0 +1,204 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  color: #333;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* .wrap { */
+/*   width: 100%; */
+/*   margin: 0 auto; */
+/*   color: #333; */
+/* } */
+
+/* two column layout in content panels */
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.1em;
+}
+
+.left {
+  width: 49%;
+  float: left;
+}
+.left-inner {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 5px 10px 5px 10px;
+  /* background-color: blue; */
+}
+
+.right {
+  width: 49%;
+  float: right;
+}
+.right-inner {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 5px 10px 5px 10px;
+  /* background-color: blue; */
+}
+
+#map {
+  margin: 30px 0 30px 0;
+  width: 100%;
+  height: 500px;
+}
+
+
+
+.module:last-child {
+  margin-bottom: 0;
+}
+
+.module h2 {
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+.module.content {
+  padding: 40px 0;
+  display:block;
+  overflow:auto;
+}
+.module.parallax {
+  height: 600px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.module.parallax-1 {
+  background-image: url("paralax-upper.jpg");
+}
+.module.parallax-2 {
+  background-image: url("paralax-middle.jpg");
+}
+.module.parallax-3 {
+  background-image: url("paralax-lower.jpg");
+}
+
+
+/* forms */
+
+input[type=text] {
+  padding: 5px 5px 5px 8px;
+  width: 320px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  margin-bottom: 10px;
+}
+
+input[type=text]:focus {
+  outline: none !important;
+}
+
+textarea {
+  padding: 5px 5px 5px 8px;
+  width: 320px;
+  height: 100px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  margin-bottom: 6px;
+}
+
+textarea:focus {
+  outline: none !important;
+}
+
+input[type=submit] {
+  padding: 3px 3px 3px 3px;
+  width: 200px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  margin-bottom: 10px;
+  background-color: white;
+  color: #777;
+}
+
+input[type=submit]:focus {
+  outline: none !important;
+}
+
+input[type=submit]:hover {
+  color: #666;
+}
+
+.feedback {
+  color: red;
+  font-size: 14px;
+}
+
+.feedback p {
+  margin: 0;
+  padding-bottom: 2px;
+}
+
+/* rsvp form */
+
+#rsvp-wrap {
+  min-height: 400px;
+  margin-left: 30px;
+}
+
+#rsvp-wrap h2 {
+  margin-bottom: 0px;
+}
+
+/* gift form */
+
+#exp {
+  width: 150px !important;
+}
+
+#cvc {
+  width: 80px !important;
+}
+
+#gift-submit {
+  margin-top: 20px;
+}
+
+@media all and (max-width: 800px) {
+  .module h2 {
+    font-size: 42px;
+  }
+  .module p {
+    font-size: 20px;
+  }
+  .module.parallax h1 {
+    font-size: 96px;
+  }
+  .container {
+    width: 100%;
+  }
+  .left {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 0 20px;
+    text-align: center;
+  }
+  .right {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 0 20px;
+    text-align: center;
+  }
+}
