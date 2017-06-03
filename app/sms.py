@@ -8,7 +8,7 @@ def send_sms_message(number, message):
     return api.send_message({
             'text': message,
             'src':  settings.PLIVO['src'],
-            'dst':  number,
+            'dst':  '1' + number,
         })
 
 
