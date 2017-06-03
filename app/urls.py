@@ -13,6 +13,9 @@ urlpatterns = [
     # gift submit endpoint
     url(r'^gift/$', views.gift, name='gift_endpoint'),
 
+    # sms relay endpoint
+    url(r'^sms/$', views.sms, name='sms_endpoint'),
+
     # django backend
     url(r'^admin/', admin.site.urls),
 
