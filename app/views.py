@@ -12,7 +12,9 @@ from .sms import send_rsvp_confirmation
 
 def landing(request):
     ''' render html landing page '''
-    render(request, 'landing.html', {})
+    return render(request, 'landing.html', {
+            'stripe_public_key': settings.STRIPE['public_key'],
+        })
 
 
 def rsvp(request):
