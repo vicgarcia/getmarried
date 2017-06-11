@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+import json
+
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.http import HttpResponse, JsonResponse
+
 from .models import RSVP, Gift
+from .forms import RSVPForm, GiftForm
+from .sms import send_rsvp_confirmation
+
 
 
 def landing(request):
@@ -10,11 +17,16 @@ def landing(request):
 
 def rsvp(request):
     ''' accept rsvp form submit via ajax '''
-    # parse & validate form
-    # save rsvp record to db
-    # send sms confirmation
-    # return json response
-    return JsonResponse({})
+    if request.method == 'POST':
+        form = RSVPForm(request.POST)
+        if form.is_valid():
+            rsvp = form.save()
+            send_rsvp_confirmation(rsvp.phone)
+            return JsonResponse({'success': True})
+        else:
+            messages = form.error_list()
+            return JsonResponse({'success': False, 'messages': messages})
+    return redirect('landing', permanent=True)
 
 
 def gift(request):

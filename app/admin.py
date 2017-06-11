@@ -5,9 +5,9 @@ from .models import *
 
 
 class RSVPAdmin(admin.ModelAdmin):
-    list_display = ( 'timestamp', 'name', 'guests' )
-    fields = ( 'timestamp', 'name', 'phone', 'guests', 'note' )
-    readonly_fields = ( 'timestamp', 'name', 'phone', 'guests', 'note' )
+    list_display = ( 'name', 'guests', 'phone', 'timestamp' )
+    fields = ( 'name', 'phone', 'guests', 'note', 'timestamp' )
+    readonly_fields = ( 'name', 'phone', 'guests', 'note', 'timestamp' )
 
 admin.site.register(RSVP, RSVPAdmin)
 
