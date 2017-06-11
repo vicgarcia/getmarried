@@ -15,7 +15,6 @@ class Gift(models.Model):
     name = models.CharField(max_length=254)
     email = models.EmailField(max_length=254)
     note = models.TextField(null=False, blank=True)
-    order = models.CharField(max_length=250)   # stripe order id
-    amount = models.IntegerField()             # stripe returns amounts as cents
-    raw = models.TextField()                   # save the entire stripe response
+    amount = models.DecimalField(decimal_places=2, max_digits=5)
+    raw = models.TextField()    # entire response from stripe
 

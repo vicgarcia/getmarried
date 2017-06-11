@@ -13,9 +13,9 @@ admin.site.register(RSVP, RSVPAdmin)
 
 
 class GiftAdmin(admin.ModelAdmin):
-    list_display = ( 'timestamp', 'name', 'amount' )
-    fields = ( 'timestamp', 'name', 'email', 'note', 'order', 'amount', 'raw' )
-    readonly_fields = ( 'timestamp', 'name', 'email', 'note', 'order', 'amount', 'raw' )
+    list_display = ( 'name', 'amount', 'timestamp' )
+    fields = ( 'name', 'email', 'note', 'amount', 'raw', 'timestamp' )
+    readonly_fields = ( 'name', 'email', 'note', 'amount', 'raw', 'timestamp' )
 
 admin.site.register(Gift, GiftAdmin)
 
