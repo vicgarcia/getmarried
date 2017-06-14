@@ -43,9 +43,20 @@ def gift(request):
 
 
 def sms(request):
-    ''' handle incoming sms postback from plivo '''
-    sender = request.POST['From']
-    message = request.POST['Text']
-    # resend the message to us
-    return HttpResponse('Message received', status=200)
+    ''' accept an incoming sms message and forward it to me & gertie '''
+    if request.method == 'POST':
+        try:
+            text = request.POST['Text']
+            source = request.POST['From']
+        except KeyError:
+            return HttpResponse(status=400)
+        try:
+            sender = RSVP.objects.get(phone=source).name
+        except (RSVP.DoesNotExist, RSVP.MultipleObjectsReturned):
+            sender = 'none'
+        message = '{}\n-{} <{}>'.format(text, sender, source)
+        for number in settings.PLIVO['relay']:
+            send_sms_message(number, message)
+        return HttpResponse(status=200)
+    return redirect('landing', permanent=True)
 
