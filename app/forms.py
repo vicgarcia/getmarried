@@ -12,7 +12,7 @@ class RSVPForm(forms.ModelForm):
     name = forms.CharField(
             error_messages={
                 'required': 'Please provide your name.',
-                'max_length': 'Please limit name to 250 characters',
+                'max_length': 'Please limit name to 250 characters.',
             }
         )
 
