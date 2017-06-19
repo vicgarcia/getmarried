@@ -15,6 +15,6 @@ class Gift(models.Model):
     name = models.CharField(max_length=254)
     email = models.EmailField(max_length=254)
     note = models.TextField(null=False, blank=True)
-    amount = models.DecimalField(decimal_places=2, max_digits=5)
+    amount = models.DecimalField(decimal_places=2, max_digits=6)
     raw = models.TextField()    # entire response from stripe
 
