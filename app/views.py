@@ -1,4 +1,5 @@
 import json
+import stripe
 
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -31,15 +32,37 @@ def rsvp(request):
     return redirect('landing', permanent=True)
 
 
+def _convert_amount_for_stripe(amount):
+    ''' convert decimal value from form to int for stripe '''
+    return int( str(amount).replace('.', '') )
+
+
 def gift(request):
     ''' accept gift form submit via ajax '''
-    # parse & validate form
-    # make api request to stripe
-    # handle api response
-    # save gift record to db
-    # send sms confirmation
-    # return json response
-    return JsonResponse({})
+    if request.method == 'POST':
+        form = GiftForm(request.POST)
+        errors = []
+        if form.is_valid():
+            gift = form.save()
+            stripe.api_key = settings.STRIPE['private_key']
+            try:
+                charge = stripe.Charge.create(
+                    amount=_convert_amount_for_stripe(gift.amount),
+                    currency='usd',
+                    source=request.POST['token'],
+                    description='wedding gift from {}'.format(gift.email)
+                )
+                gift.raw = json.dumps(charge)
+                gift.save()
+                return JsonResponse({'success': True})
+            except stripe.error.CardError as e:
+                errors.append(e.json_body['error']['message'])
+            except Exception:
+                errors.append('An unknown error occurred.')
+        else:
+            errors.extend(form.error_list())
+        return JsonResponse({'success': False, 'messages': errors})
+    return redirect('landing', permanent=True)
 
 
 def sms(request):
