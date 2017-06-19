@@ -88,11 +88,11 @@ class GiftForm(forms.ModelForm):
         )
 
     amount = forms.DecimalField(
-            max_value=900.00,
+            max_value=1000.00,
             min_value=10.00,
             error_messages={
                 'min_value': 'Please provide an amount over $10.',
-                'max_value': 'Please provide an amount below $900.',
+                'max_value': 'Please provide an amount below $1000.',
                 'max_decimal_places': 'Please specify gift amount with 2 decimal places.',
                 'required': 'Please provide a gift amount.',
                 'invalid': 'Please provide a valid gift amount.',
