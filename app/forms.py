@@ -69,23 +69,52 @@ class RSVPForm(forms.ModelForm):
 class GiftForm(forms.ModelForm):
 
     class Meta:
-        model = RSVP
-        fields = [ 'name', 'email', 'note' ]
+        model = Gift
+        fields = [ 'name', 'email', 'note', 'amount' ]
 
     name = forms.CharField(
             error_messages={
-                'max_length': 'Please limit name to 250 characters',
+                'max_length': 'Please limit name to 250 characters.',
                 'required': 'Please provide your name.',
             }
         )
 
     email = forms.EmailField(
             error_messages={
-                'max_length': 'Please limit email address to 250 characters',
+                'max_length': 'Please limit email address to 250 characters.',
                 'required': 'Please provide your email address.',
                 'invalid': 'Please provide a valid email address.',
             }
         )
+
+    amount = forms.DecimalField(
+            max_value=900.00,
+            min_value=10.00,
+            error_messages={
+                'min_value': 'Please provide an amount over $10.',
+                'max_value': 'Please provide an amount below $900.',
+                'max_decimal_places': 'Please specify gift amount with 2 decimal places.',
+                'required': 'Please provide a gift amount.',
+                'invalid': 'Please provide a valid gift amount.',
+            }
+        )
+
+    def error_list(self):
+        ''' return a flat list of errors for use in ajax form '''
+
+        # the order of fields controls order of messages in error list
+        error_order = [ 'name', 'email', 'amount' ]
+
+        # work through the form model components to get error message strings
+        error_data = self.errors.as_data()
+        error_list = []
+        for field in error_order:
+            if field in error_data:
+                for error in error_data[field]:
+                    error_list.append(error.message)
+
+        # return a flat list of error strings
+        return error_list
 
     def save(self):
         ''' override save method to default to commit=False '''
