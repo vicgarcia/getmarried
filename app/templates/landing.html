@@ -33,6 +33,12 @@
                         <form id="rsvp-form">
                             <input id="name" name="name" type="text" placeholder="your name" />
                             <br/>
+                            <select id="attending" name="attending">
+                                <option disabled selected value>RSVP</option>
+                                <option value="true">Attending</option>
+                                <option value="false">Not Attending</option>
+                            </select>
+                            <br/>
                             <input id="guests" name="guests" type="text" placeholder="number of guests" />
                             <br/>
                             <input id="phone" name="phone" type="text" placeholder="phone number" />
@@ -133,6 +139,9 @@
     <script src="https://js.stripe.com/v2/"></script>
     <script>
     $(document).ready(function() {
+
+        /* select box choice color */
+        $('#attending').change(function() { $(this).css('color', '#000'); });
 
         /* setup map */
         L.mapbox.accessToken = 'pk.eyJ1IjoiYnNjdGVjaG5vbG9neSIsImEiOiJKYk1mNmJFIn0.5UWqfSgh9zwnOZ3q6TKfYw';

@@ -80,6 +80,22 @@ a:hover {
 
 /* forms */
 
+select {
+  padding: 5px 5px 5px 8px;
+  width: 295px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  background-color: white;
+  margin-bottom: 10px;
+  color: #777;
+}
+
+select:focus {
+  outline: none !important;
+}
+
 input[type=text] {
   padding: 5px 5px 5px 8px;
   width: 280px;
