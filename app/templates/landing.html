@@ -2,16 +2,382 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-
     <title>GertieAndVicGetMarried.com</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.css" rel="stylesheet" />
+    <link href="static/style.css" rel="stylesheet" />
+
 </head>
 
 <body>
 
+    <div class="wrap">
 
+        <div class="panel parallax parallax-1">
+            <div class="content-inner"></div>
+        </div>
+
+        <div class="panel content">
+            <div class="content-inner">
+                <div class="left">
+                    <h2>We're getting married!</h2>
+                    <p>Join us on October 21, 2017 at 5pm for the wedding of Gertie Fisher-Koeln and Vic Garcia.</p>
+                    <p>The ceremony and reception will be held at the <a target="_blank" href="http://openhousechicago.org/sites/site/berger-park-cultural-center-downey-house/">Downey Mansion</a> at <a target="_blank" href="http://www.chicagoparkdistrict.com/parks/berger-park/">Berger Park</a>, located at <a target="_blank" href="https://www.google.com/maps/dir//6205+N+Sheridan+Rd,+Chicago,+IL+60660/@42.0244996,-87.7711165,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x880fd174d2c37a1f:0x21b2dce5cf19ebd4!2m2!1d-87.6551086!2d41.9948598">6205 N Sheridan</a> in Chicago.</p>
+                    <p>If you will be joining us to celebrate, please use the form <span class="mobile-element">below</span><span class="fullpage-element">on the right</span> to RSVP.</p>
+                </div>
+                <div class="right">
+                    <div id="rsvp-wrap">
+                        <form id="rsvp-form">
+                            <input id="name" name="name" type="text" placeholder="your name" />
+                            <br/>
+                            <input id="guests" name="guests" type="text" placeholder="number of guests" />
+                            <br/>
+                            <input id="phone" name="phone" type="text" placeholder="phone number" />
+                            <br/>
+                            <textarea id="notes" name="notes" placeholder="additional notes"></textarea>
+                            <br/>
+                            {% csrf_token %}
+                            <input type="submit" value="submit" />
+                        </form>
+                        <div id="rsvp-feedback" class="feedback">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel parallax parallax-2">
+            <div class="content-inner"></div>
+        </div>
+
+        <div class="panel content">
+            <div class="content-inner">
+                <div class="left">
+                    <div id="map"></div>
+                </div>
+                <div class="right">
+                    <h2>guest accommodations</h2>
+                    <p>We have rooms reserved at four local hotels for guests. You are welcome to stay at one of these or other hotels. The venue is near the Red Line which is accessible downtown. Visitors flying into O'Hare can stay downtown and travel from the airport to their hotel via the Blue Line and forego the need for a rental car.</p>
+                    <p>If you would like to book a room at one of these hotels, please contact them directly and mention that you are booking a room for the Fisher-Koeln / Garcia wedding.</p>
+                    <p>
+                        DoubleTree North Shore in Skokie <br/>
+                        <a target="_blank" href="http://doubletree3.hilton.com/en/hotels/illinois/doubletree-by-hilton-hotel-chicago-north-shore-conference-center-CHICCDT/index.html">website</a> |
+                        <a target="_blank" href="https://www.google.com/maps/dir/9599+Skokie+Blvd,+Skokie,+IL/6205+N+Sheridan+Rd,+Chicago,+IL+60660/@42.0245155,-87.7361821,13z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x880fcf7d3df20fa1:0xb98c77a4ec5e4abf!2m2!1d-87.7457657!2d42.0541442!1m5!1m1!1s0x880fd174d2c37a1f:0x21b2dce5cf19ebd4!2m2!1d-87.6551086!2d41.9948598">directions to venue</a>
+                    </p>
+                    <p>
+                        Hampton Inn Chicago North<br/>
+                        <a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/illinois/hampton-inn-chicago-north-loyola-station-CHIYOHX/index.html">website</a> |
+                        <a target="_blank" href="https://www.google.com/maps/dir/1209+W+Albion+Ave,+Chicago,+IL+60626/6205+N+Sheridan+Rd,+Chicago,+IL+60660/@41.9981039,-87.6670242,15z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x880fd1a657ed6a1f:0x247a29faa0efaab1!2m2!1d-87.6613873!2d42.0025358!1m5!1m1!1s0x880fd174d2c37a1f:0x21b2dce5cf19ebd4!2m2!1d-87.6551086!2d41.9948598">directions to venue</a>
+                    </p>
+                    <p>
+                        Hotel Indigo<br/>
+                        <a target="_blank" href="https://www.ihg.com/hotelindigo/hotels/us/en/chicago/chigc/hoteldetail">website</a> |
+                        <a target="_blank" href="https://www.google.com/maps/dir/1244+North+Dearborn+Street,+Chicago,+IL/6205+N+Sheridan+Rd,+Chicago,+IL+60660/@41.9470172,-87.711608,12z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x880fd34f89da5a17:0x792592c4e84d092a!2m2!1d-87.6304323!2d41.9052043!1m5!1m1!1s0x880fd174d2c37a1f:0x21b2dce5cf19ebd4!2m2!1d-87.6551086!2d41.9948598">directions to venue</a>
+                    </p>
+                    <p>
+                        The Inn of Chicago<br/>
+                        <a target="_blank" href="https://www.theinnofchicago.com">website</a> |
+                        <a target="_blank" href="https://www.google.com/maps/dir/162+E+Grand+Ave,+Chicago,+IL+60611/6205+N+Sheridan+Rd,+Chicago,+IL+60660/@41.9411141,-87.7049603,12z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x880e2cac769e9803:0x266cc518ea2a9c8c!2m2!1d-87.6238413!2d41.8917494!1m5!1m1!1s0x880fd174d2c37a1f:0x21b2dce5cf19ebd4!2m2!1d-87.6551086!2d41.9948598">directions to venue</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel parallax parallax-3">
+            <div class="content-inner"></div>
+        </div>
+
+        <div class="panel content">
+            <div class="content-inner">
+                <div class="left">
+                    <h2>gift registry information</h2>
+                    <p>Soon after our wedding we're planning an adventure! In order to make finding a new home in Miami easier, we are asking guests to forego traditional gifts.</p>
+                    <p>For your convience, we've built this website to handle card based payments.  Payments are processed securely using <a target="_blank" href="https://stripe.com">Stripe.</a></p>
+                </div>
+                <div class="right">
+                    <div id="gift-wrap">
+                        <form id="gift-form">
+                            <input id="gift-name" type="text" placeholder="your name" />
+                            <br/>
+                            <input id="gift-email" type="text" placeholder="email address" />
+                            <br/>
+                            <textarea id="gift-name" placeholder="gift message"></textarea>
+                            <br/>
+                            <input id="gift-amount" type="text" placeholder="amount" />
+                            <br/>
+                            <br/>
+                            <input id="card" type="text" placeholder="card number" />
+                            <br/>
+                            <input id="exp" type="text" placeholder="mm/yyyy" />
+                            <input id="cvc" type="text" placeholder="cvc" />
+                            <br/>
+                            <input id="gift-submit" type="submit" value="submit" />
+                        </form>
+                        <div id="gift-feedback" class="feedback">
+                        </div>
+                    </div>
+                </div>
+                <div id="attribution">
+                    <p><a href="https://github.com/vicgarcia/getmarried">vic garcia &copy; 2017</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.js"></script>
+    <script src="https://js.stripe.com/v2/"></script>
     <script>
+    $(document).ready(function() {
 
+        /* setup map */
+        L.mapbox.accessToken = 'pk.eyJ1IjoiYnNjdGVjaG5vbG9neSIsImEiOiJKYk1mNmJFIn0.5UWqfSgh9zwnOZ3q6TKfYw';
+        var markers = [
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.655490, 41.994701]
+                },
+                'properties': {
+                    'title': 'Downey Mansion at Berger Park',
+                    'description': '6205 N Sheridan<br/><a target="_blank" href="http://www.chicagoparkdistrict.com/parks/berger-park/">chicagoparkdistrict.com</a>',
+                    'marker-color': '#fff689',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'heart'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.629273, 41.878674]
+                },
+                'properties': {
+                    'title': 'Jackson Blue Line',
+                    'description': '328 S Dearborn<br/>Free Transfer to Red Line<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=75">transitchicago.com</a>',
+                    'marker-color': '#5998c5',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.903601, 41.978362]
+                },
+                'properties': {
+                    'title': 'O\'Hare Blue Line',
+                    'description': '1000 O\'Hare Drive<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=110">transitchicago.com</a>',
+                    'marker-color': '#5998c5',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.627793, 41.877600]
+                },
+                'properties': {
+                    'title': 'Jackson Red Line',
+                    'description': '230 S State<br/>Free Transfer to Blue Line<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=76">transitchicago.com</a>',
+                    'marker-color': '#e03616',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.628203, 41.891642]
+                },
+                'properties': {
+                    'title': 'Grand Red Line',
+                    'description': '521 N State<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=63">transitchicago.com</a>',
+                    'marker-color': '#e03616',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.631956, 41.903834]
+                },
+                'properties': {
+                    'title': 'Clark/Division Red Line',
+                    'description': '1200 N Clark<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=42">transitchicago.com</a>',
+                    'marker-color': '#e03616',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.659274, 41.994512]
+                },
+                'properties': {
+                    'title': 'Granville Red Line',
+                    'description': '1119 W Granville<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=64">transitchicago.com</a>',
+                    'marker-color': '#e03616',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.660968, 42.001176]
+                },
+                'properties': {
+                    'title': 'Loyola Red Line',
+                    'description': '1200 W Loyola<br/><a target="_blank" href="http://www.transitchicago.com/travel_information/station.aspx?StopId=95">transitchicago.com</a>',
+                    'marker-color': '#e03616',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'rail'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.630014, 41.905185]
+                },
+                'properties': {
+                    'title': 'Hotel Indigo',
+                    'description': '1244 N Dearborn<br/><a target="_blank" href="https://www.ihg.com/hotelindigo/hotels/us/en/chicago/chigc/hoteldetail">ihg.com</a>',
+                    'marker-color': '#58355e',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'lodging'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.623150, 41.892664]
+                },
+                'properties': {
+                    'title': 'The Inn of Chicago',
+                    'description': '162 E Grand<br/><a target="_blank" href="https://www.theinnofchicago.com">theinnofchicago.com</a>',
+                    'marker-color': '#58355e',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'lodging'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.661425, 42.002519]
+                },
+                'properties': {
+                    'title': 'Hampton Inn Chicago North',
+                    'description': '1209 W Albion<br/><a target="_blank" href="http://hamptoninn3.hilton.com/en/hotels/illinois/hampton-inn-chicago-north-loyola-station-CHIYOHX/index.html">hilton.com</a>',
+                    'marker-color': '#58355e',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'lodging'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-87.746527, 42.062758]
+                },
+                'properties': {
+                    'title': 'DoubleTree Chicago North Shore',
+                    'description': '9599 Skokie Blvd, Skokie<br/><a target="_blank" href="http://doubletree3.hilton.com/en/hotels/illinois/doubletree-by-hilton-hotel-chicago-north-shore-conference-center-CHICCDT/index.html">hilton.com</a>',
+                    'marker-color': '#58355e',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'lodging'
+                }
+            },
+        ];
+        var map = L.mapbox.map('map', 'mapbox.streets').setView([41.995293, -87.6573157], 11),
+            layer = L.mapbox.featureLayer().setGeoJSON(markers).addTo(map);
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+
+        /* form handling for rsvp */
+        $('#rsvp-form').submit(function() {
+            event.preventDefault();
+            $('#rsvp-feedback').html('');
+            $.post('/rsvp/', $('#rsvp-form').serialize(), function(resp) {
+                if (resp.success == true) {
+                    $('#rsvp-wrap').html("<h2>Thanks for the RSVP!</h2><p>We're looking forward to seeing you there!</p>");
+                } else {
+                    var error_message = '';
+                    for(var i = 0; i < resp.messages.length; i++) {
+                        error_message += '<p>' + resp.messages[i] + '</p>';
+                    }
+                    $('#rsvp-feedback').html(error_message);
+                }
+            });
+        });
+
+        /* form handling for gift payment */
+        Stripe.setPublishableKey('{{ stripe_public_key }}');
+        $('#gift-form').submit(function() {
+            event.preventDefault();
+            $('#gift-feedback').html('');
+            var card = {
+                number: $('#card').val(),
+                cvc: $('#cvc').val(),
+                exp_month: $('#exp').val().split('/')[0],
+                exp_year: $('#exp').val().split('/')[1],
+            };
+            Stripe.card.createToken(card, function(status, response) {
+                if (response.error) {
+                    var stripe_error;
+                    if (!card.number) {
+                        stripe_error = '<p>Please provide a valid card number</p>';
+                    } else if (response.error.message == 'Missing required param: card[exp_year].') {
+                        stripe_error = '<p>Please provide a valid expiration date</p>';
+                    } else if (response.error.message == 'Could not find payment information') {
+                        stripe_error = '<p>Please provide a valid card number</p>';
+                    } else {
+                        stripe_error = '<p>' + response.error.message + '</p>';
+                    }
+                    $('#gift-feedback').html(stripe_error);
+                } else {
+                    var payload = {
+                        token: response.id,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        amount: $('#gift-amount').val(),
+                        name: $('#gift-name').val(),
+                        email: $('#gift-email').val(),
+                        note: $('#gift-note').val(),
+                    };
+                    $.post('/gift/', payload, function(resp) {
+                        if (resp.success == true) {
+                            $('#gift-wrap').html('<h2>Thank you!</h2><p>We appreciate your gift! Looking forward to seeing you!</p>');
+                        } else {
+                            var error_message = '';
+                            for(var i = 0; i < resp.messages.length; i++) {
+                                error_message += '<p>' + resp.messages[i] + '</p>';
+                            }
+                            $('#gift-feedback').html(error_message);
+                        }
+                    });
+                }
+            });
+        });
+
+    });
     </script>
 
 </body>
