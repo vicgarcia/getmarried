@@ -14,7 +14,7 @@ def send_sms_message(number, message):
 
 def send_rsvp_confirmation(number):
     ''' function to send rsvp confirmation texts '''
-    message = "Thanks for the RSVP. We can't wait to see you at our wedding! If you need anything you can reply to this text message to get in touch with us! \n- Gertie & Vic"
+    message = "Thanks for the RSVP! We can't wait to see you at our wedding. If you need anything you can reply to this text message to get in touch with us. \n- Gertie & Vic"
     status, response = send_sms_message(number, message)
     return status == 202
 
