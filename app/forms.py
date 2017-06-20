@@ -43,7 +43,6 @@ class RSVPForm(forms.ModelForm):
 
         # ensure we get a positive number of guests if attending
         attending = self.cleaned_data['attending']
-        print(attending)
         if attending and data < 1:
             self.add_error('guests', 'Please provide a number of guests.')
 
