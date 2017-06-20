@@ -34,16 +34,16 @@
                             <input id="name" name="name" type="text" placeholder="your name" />
                             <br/>
                             <select id="attending" name="attending">
-                                <option disabled selected value>RSVP</option>
-                                <option value="true">Attending</option>
-                                <option value="false">Not Attending</option>
+                                <option disabled selected value>rsvp</option>
+                                <option value="true">attending</option>
+                                <option value="false">not attending</option>
                             </select>
                             <br/>
                             <input id="guests" name="guests" type="text" placeholder="number of guests" />
                             <br/>
                             <input id="phone" name="phone" type="text" placeholder="phone number" />
                             <br/>
-                            <textarea id="notes" name="notes" placeholder="additional notes"></textarea>
+                            <textarea id="notes" name="notes" placeholder="message"></textarea>
                             <br/>
                             {% csrf_token %}
                             <input type="submit" value="submit" />
