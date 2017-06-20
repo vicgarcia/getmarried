@@ -30,6 +30,15 @@ class RSVPForm(forms.ModelForm):
             }
         )
 
+    def clean_guests(self):
+        ''' ensure a null value for guests is set to 0 '''
+
+        data = self.cleaned_data['guests']
+        if not data:
+            data = 0
+
+        return data
+
     def clean_phone(self):
         ''' clean the phone number input to a 10 digit string '''
 
