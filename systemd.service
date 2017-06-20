@@ -1,0 +1,9 @@
+[Unit]
+Description=getMarried uWSGI
+After=network.target
+[Service]
+Restart=on-failure
+WorkingDirectory=/opt/getmarried
+ExecStart=/opt/getmarried/env/bin/uwsgi --ini /opt/getmarried/uwsgi.ini
+[Install]
+WantedBy=multi-user.target
