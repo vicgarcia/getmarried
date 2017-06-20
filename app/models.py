@@ -7,7 +7,7 @@ class RSVP(models.Model):
     name = models.CharField(max_length=254)
     phone = models.CharField(max_length=10)
     attending = models.BooleanField(default=False)
-    guests = models.IntegerField(default=0)
+    guests = models.IntegerField()
     note = models.TextField(null=False, blank=True)
 
 
