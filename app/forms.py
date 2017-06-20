@@ -31,11 +31,21 @@ class RSVPForm(forms.ModelForm):
         )
 
     def clean_guests(self):
-        ''' ensure a null value for guests is set to 0 '''
-
+        ''' special handling for the guests field
+            if null, default the field to zero
+            if attending, provide an error when guests is zero
+        '''
         data = self.cleaned_data['guests']
+
+        # handle a null value as zero
         if not data:
             data = 0
+
+        # ensure we get a positive number of guests if attending
+        attending = self.cleaned_data['attending']
+        print(attending)
+        if attending and data < 1:
+            self.add_error('guests', 'Please provide a number of guests.')
 
         return data
 
