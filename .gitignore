@@ -7,3 +7,6 @@ env/*
 # exclude dev sqlite db
 db.sqlite3
 
+# exclude .backup files
+*.backup
+
