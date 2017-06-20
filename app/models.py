@@ -6,7 +6,8 @@ class RSVP(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=254)
     phone = models.CharField(max_length=10)
-    guests = models.IntegerField()
+    attending = models.BooleanField(default=False)
+    guests = models.IntegerField(default=0)
     note = models.TextField(null=False, blank=True)
 
 

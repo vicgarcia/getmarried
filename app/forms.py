@@ -7,7 +7,7 @@ class RSVPForm(forms.ModelForm):
 
     class Meta:
         model = RSVP
-        fields = [ 'name', 'guests', 'phone', 'note' ]
+        fields = [ 'name', 'attending', 'guests', 'phone', 'note' ]
 
     name = forms.CharField(
             error_messages={
@@ -19,14 +19,14 @@ class RSVPForm(forms.ModelForm):
     phone = forms.CharField(
             max_length=None,
             error_messages={
-                'required': 'Please provide a phone number.'
+                'required': 'Please provide a phone number.',
             }
         )
 
     guests = forms.IntegerField(
+            required=False,
             error_messages={
                 'invalid': 'Please provide a number of guests.',
-                'required': 'Please provide a number of guests.'
             }
         )
 
