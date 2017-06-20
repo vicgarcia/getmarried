@@ -58,7 +58,8 @@ def gift(request):
                     amount=_convert_amount_for_stripe(gift.amount),
                     currency='usd',
                     source=request.POST['token'],
-                    description='wedding gift from {}'.format(gift.email)
+                    description='wedding gift from {}'.format(gift.email),
+                    receipt_email=gift.email,
                 )
                 gift.raw = json.dumps(charge)
                 gift.save()
