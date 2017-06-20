@@ -7,7 +7,7 @@ from django.http import HttpResponse, JsonResponse
 
 from .models import RSVP, Gift
 from .forms import RSVPForm, GiftForm
-from .sms import send_rsvp_confirmation
+from .sms import send_sms_message
 
 
 
@@ -18,13 +18,21 @@ def landing(request):
         })
 
 
+IS_ATTENDING_MESSAGE = "Thanks for the RSVP! We can't wait to see you at our wedding. If you need anything you can reply to this text message to get in touch with us. \n- Gertie & Vic"
+
+NOT_ATTENDING_MESSAGE = "Thanks for the RSVP! We'll miss you on our special day. Thank you for letting us know you won't be able to make it. \n- Gertie & Vic"
+
 def rsvp(request):
     ''' accept rsvp form submit via ajax '''
     if request.method == 'POST':
         form = RSVPForm(request.POST)
         if form.is_valid():
             rsvp = form.save()
-            send_rsvp_confirmation(rsvp.phone)
+            if rsvp.attending:
+                message = IS_ATTENDING_MESSAGE
+            else:
+                message = NOT_ATTENDING_MESSAGE
+            send_sms_message(rsvp.phone, message)
             return JsonResponse({'success': True})
         else:
             messages = form.error_list()
