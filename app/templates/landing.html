@@ -373,7 +373,7 @@
                     };
                     $.post('/gift/', payload, function(resp) {
                         if (resp.success == true) {
-                            $('#gift-wrap').html('<h2>Thank you!</h2><p>We appreciate your gift and are looking forward to seeing you!</p>');
+                            $('#gift-wrap').html('<h2>Thank you!</h2><p>We appreciate your gift and are looking forward to seeing you on the big day!</p><p>You will be receiving an email receipt shortly.</p>');
                         } else {
                             var error_message = '';
                             for(var i = 0; i < resp.messages.length; i++) {
