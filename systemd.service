@@ -1,9 +1,13 @@
 [Unit]
-Description=getMarried uWSGI
+Description=getMarried
 After=network.target
+
 [Service]
+User=vicg4rcia
+Group=www-data
 Restart=on-failure
 WorkingDirectory=/opt/getmarried
-ExecStart=/opt/getmarried/env/bin/uwsgi --ini /opt/getmarried/uwsgi.ini
+ExecStart=/opt/getmarried/env/bin/gunicorn --workers 3 --bind 127.0.0.1:5007 app.wsgi:application
+
 [Install]
 WantedBy=multi-user.target
