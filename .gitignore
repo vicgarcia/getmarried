@@ -10,6 +10,9 @@ db.sqlite3
 # exclude .backup files
 *.backup
 
+# exclude collected static files
+static/*
+
 # exclude edited configuration files
 app/development.py
 app/production.py
