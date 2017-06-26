@@ -223,6 +223,9 @@ input[type=submit]:hover {
 }
 
 @media all and (max-width: 850px) {
+  .panel.parallax {
+    background-attachment: scroll;
+  }
   .content-inner {
     width: 100%;
   }
