@@ -8,6 +8,7 @@ Group=www-data
 Restart=on-failure
 WorkingDirectory=/opt/getmarried
 ExecStart=/opt/getmarried/env/bin/gunicorn --workers 3 --bind 127.0.0.1:5007 app.wsgi:application
+StartLimitBurst=0
 
 [Install]
 WantedBy=multi-user.target
