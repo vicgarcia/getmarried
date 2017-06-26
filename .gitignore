@@ -13,4 +13,5 @@ db.sqlite3
 # exclude edited configuration files
 app/development.py
 app/production.py
+app/settings.py
 
