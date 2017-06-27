@@ -85,10 +85,11 @@ def sms(request):
         except KeyError:
             return HttpResponse(status=400)
         try:
-            sender = RSVP.objects.get(phone=source).name
+            name = RSVP.objects.get(phone=source).name
+            sender = '{} <{}>'.format(name, source)
         except (RSVP.DoesNotExist, RSVP.MultipleObjectsReturned):
-            sender = 'none'
-        message = '{}\n-{} <{}>'.format(text, sender, source)
+            sender = '<{}>'.format(source)
+        message = text + '\n' + sender
         for number in settings.PLIVO['relay']:
             send_sms_message(number, message)
         return HttpResponse(status=200)
