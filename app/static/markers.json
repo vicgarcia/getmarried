@@ -1,0 +1,170 @@
+[
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.655490, 41.994701]
+        },
+        "properties": {
+            "title": "Downey Mansion at Berger Park",
+            "description": "6205 N Sheridan<br/><a target='_blank' href='http://www.chicagoparkdistrict.com/parks/berger-park/'>chicagoparkdistrict.com</a>",
+            "marker-color": "#fff689",
+            "marker-size": "medium",
+            "marker-symbol": "heart"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.629273, 41.878674]
+        },
+        "properties": {
+            "title": "Jackson Blue Line",
+            "description": "328 S Dearborn<br/>Free Transfer to Red Line<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=75'>transitchicago.com</a>",
+            "marker-color": "#5998c5",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.903601, 41.978362]
+        },
+        "properties": {
+            "title": "O\"Hare Blue Line",
+            "description": "1000 O\"Hare Drive<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=110'>transitchicago.com</a>",
+            "marker-color": "#5998c5",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.627793, 41.877600]
+        },
+        "properties": {
+            "title": "Jackson Red Line",
+            "description": "230 S State<br/>Free Transfer to Blue Line<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=76'>transitchicago.com</a>",
+            "marker-color": "#e03616",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.628203, 41.891642]
+        },
+        "properties": {
+            "title": "Grand Red Line",
+            "description": "521 N State<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=63'>transitchicago.com</a>",
+            "marker-color": "#e03616",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.631956, 41.903834]
+        },
+        "properties": {
+            "title": "Clark/Division Red Line",
+            "description": "1200 N Clark<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=42'>transitchicago.com</a>",
+            "marker-color": "#e03616",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.659274, 41.994512]
+        },
+        "properties": {
+            "title": "Granville Red Line",
+            "description": "1119 W Granville<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=64'>transitchicago.com</a>",
+            "marker-color": "#e03616",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.660968, 42.001176]
+        },
+        "properties": {
+            "title": "Loyola Red Line",
+            "description": "1200 W Loyola<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=95'>transitchicago.com</a>",
+            "marker-color": "#e03616",
+            "marker-size": "medium",
+            "marker-symbol": "rail"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.630014, 41.905185]
+        },
+        "properties": {
+            "title": "Hotel Indigo",
+            "description": "1244 N Dearborn<br/><a target='_blank' href='https://www.ihg.com/hotelindigo/hotels/us/en/chicago/chigc/hoteldetail'>ihg.com</a>",
+            "marker-color": "#58355e",
+            "marker-size": "medium",
+            "marker-symbol": "lodging"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.623150, 41.892664]
+        },
+        "properties": {
+            "title": "The Inn of Chicago",
+            "description": "162 E Grand<br/><a target='_blank' href='https://www.theinnofchicago.com'>theinnofchicago.com</a>",
+            "marker-color": "#58355e",
+            "marker-size": "medium",
+            "marker-symbol": "lodging"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.661425, 42.002519]
+        },
+        "properties": {
+            "title": "Hampton Inn Chicago North",
+            "description": "1209 W Albion<br/><a target='_blank' href='http://hamptoninn3.hilton.com/en/hotels/illinois/hampton-inn-chicago-north-loyola-station-CHIYOHX/index.html'>hilton.com</a>",
+            "marker-color": "#58355e",
+            "marker-size": "medium",
+            "marker-symbol": "lodging"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-87.746527, 42.062758]
+        },
+        "properties": {
+            "title": "DoubleTree Chicago North Shore",
+            "description": "9599 Skokie Blvd, Skokie<br/><a target='_blank' href='http://doubletree3.hilton.com/en/hotels/illinois/doubletree-by-hilton-hotel-chicago-north-shore-conference-center-CHICCDT/index.html'>hilton.com</a>",
+            "marker-color": "#58355e",
+            "marker-size": "medium",
+            "marker-symbol": "lodging"
+        }
+    }
+]
