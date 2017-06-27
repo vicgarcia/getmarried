@@ -70,6 +70,10 @@ DATABASES = {
     }
 }
 
+MAPBOX = {
+    'token': '',
+}
+
 PLIVO = {
     'id': '',
     'token': '',

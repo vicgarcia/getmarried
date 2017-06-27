@@ -20,6 +20,7 @@ def landing(request):
     ''' render html landing page '''
     return render(request, 'landing.html', {
             'stripe_public_key': settings.STRIPE['public_key'],
+            'mapbox_api_token': settings.MAPBOX['token'],
         })
 
 

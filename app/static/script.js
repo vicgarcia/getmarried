@@ -4,7 +4,6 @@ $(document).ready(function() {
     $('#attending').change(function() { $(this).css('color', '#000'); });
 
     /* setup map */
-    L.mapbox.accessToken = 'pk.eyJ1IjoiYnNjdGVjaG5vbG9neSIsImEiOiJKYk1mNmJFIn0.5UWqfSgh9zwnOZ3q6TKfYw';
     var map = L.mapbox.map('map', 'mapbox.streets').setView([41.995293, -87.6573157], 11),
         layer = L.mapbox.featureLayer().loadURL('/static/markers.json').addTo(map);
     map.touchZoom.disable();
@@ -29,7 +28,6 @@ $(document).ready(function() {
     });
 
     /* form handling for gift payment */
-    Stripe.setPublishableKey('{{ stripe_public_key }}');
     $('#gift-form').submit(function() {
         event.preventDefault();
         $('#gift-feedback').html('');
