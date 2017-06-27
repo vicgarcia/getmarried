@@ -8,5 +8,5 @@ then
 fi
 
 # run django dev server
-sudo env/bin/python manage.py $ARGS --settings app.development
+sudo env/bin/python manage.py $ARGS
 

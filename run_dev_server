@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # run django dev server
-sudo env/bin/python manage.py runserver 192.168.33.44:80 --settings app.development
+sudo env/bin/python manage.py runserver 192.168.33.44:80
 
