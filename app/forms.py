@@ -30,10 +30,34 @@ class RSVPForm(forms.ModelForm):
             }
         )
 
+    attending = forms.BooleanField(
+            required=False
+        )
+
+    def clean(self):
+        ''' override the clean method for special handling for the attending field
+            if no selection is provided, setup an error message
+            parse the text value posted for attending to a boolean value
+        '''
+        super(RSVPForm, self).clean()
+        cleaned_data = self.cleaned_data
+
+        # handle the value for attending as true/false
+        if 'attending' in self.data:
+            attending = self.data['attending']
+            if attending == 'true':
+                cleaned_data['attending'] = True
+            if attending == 'false':
+                cleaned_data['attending'] = False
+        else:
+            self.add_error('attending', 'Please select an RSVP option.')
+
+        return cleaned_data
+
     def clean_guests(self):
         ''' special handling for the guests field
             if null, default the field to zero
-            if attending, provide an error when guests is zero
+            if attending is true, provide an error when guests is zero
         '''
         data = self.cleaned_data['guests']
 
@@ -42,9 +66,10 @@ class RSVPForm(forms.ModelForm):
             data = 0
 
         # ensure we get a positive number of guests if attending
-        attending = self.cleaned_data['attending']
-        if attending and data < 1:
-            self.add_error('guests', 'Please provide a number of guests.')
+        if 'attending' in self.cleaned_data:
+            attending = self.cleaned_data['attending']
+            if attending and data < 1:
+                self.add_error('guests', 'Please provide a number of guests.')
 
         return data
 
@@ -70,7 +95,7 @@ class RSVPForm(forms.ModelForm):
         ''' return a flat list of errors for use in ajax form '''
 
         # the order of fields controls order of messages in error list
-        error_order = [ 'name', 'guests', 'phone' ]
+        error_order = [ 'name', 'attending', 'guests', 'phone' ]
 
         # work through the form model components to get error message strings
         error_data = self.errors.as_data()
