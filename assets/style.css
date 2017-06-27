@@ -223,12 +223,15 @@ input[type=submit]:hover {
 }
 
 @media all and (max-width: 850px) {
+
   .panel.parallax {
     background-attachment: scroll;
   }
+
   .content-inner {
     width: 100%;
   }
+
   .left {
     width: 92%;
     max-width: 800px;
@@ -237,6 +240,7 @@ input[type=submit]:hover {
     text-align: center;
     float: none;
   }
+
   .right {
     width: 92%;
     max-width: 800px;
@@ -245,15 +249,19 @@ input[type=submit]:hover {
     text-align: center;
     float: none;
   }
+
   #rsvp-wrap {
     margin: 0;
   }
+
   #rsvp-wrap h2 {
     padding: 90px 0 10px 0;
   }
+
   #gift-wrap {
     margin: 0;
   }
+
   #map {
     width: 90%;
     margin: 0 auto;
