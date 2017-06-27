@@ -4,6 +4,7 @@ import stripe
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import RSVP, Gift
 from .forms import RSVPForm, GiftForm
@@ -74,6 +75,7 @@ def gift(request):
     return redirect('landing', permanent=True)
 
 
+@csrf_exempt
 def sms(request):
     ''' accept an incoming sms message and forward it to me & gertie '''
     if request.method == 'POST':
