@@ -81,7 +81,7 @@ def sms(request):
     if request.method == 'POST':
         try:
             text = request.POST['Text']
-            source = request.POST['From']
+            source = request.POST['From'][1:]
         except KeyError:
             return HttpResponse(status=400)
         try:
