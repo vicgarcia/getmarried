@@ -228,6 +228,10 @@ input[type=submit]:hover {
     background-attachment: scroll;
   }
 
+  .panel.parallax-3 {
+    background-position: 35% 50%;
+  }
+
   .content-inner {
     width: 100%;
   }
