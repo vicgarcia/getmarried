@@ -49,6 +49,8 @@ class RSVPForm(forms.ModelForm):
                 cleaned_data['attending'] = True
             if attending == 'false':
                 cleaned_data['attending'] = False
+
+        # otherwise an error message that RSVP must be selected
         else:
             self.add_error('attending', 'Please select an RSVP option.')
 
@@ -65,19 +67,26 @@ class RSVPForm(forms.ModelForm):
         if not data:
             data = 0
 
-        # ensure we get a positive number of guests if attending
+        # handle logical relationship with attending field
         if 'attending' in self.cleaned_data:
             attending = self.cleaned_data['attending']
-            if attending and data < 1:
-                self.add_error('guests', 'Please provide a number of guests.')
+
+            # ensure we get a positive number of guests if attending
+            if attending:
+                if data < 1:
+                    self.add_error('guests', 'Please provide a number of guests.')
+
+            # force a zero guests value if not attending
+            else:
+                data = 0
 
         return data
 
     def clean_phone(self):
         ''' clean the phone number input to a 10 digit string '''
+        data = self.cleaned_data['phone']
 
         # parse out common phone symbols
-        data = self.cleaned_data['phone']
         data = re.sub(r'\.|\+|\(|\)|\-|\ ', '', data)
 
         # if the phone number starts w/ 1, remove it
@@ -88,7 +97,6 @@ class RSVPForm(forms.ModelForm):
         if not data.isdigit() or len(data) != 10:
             raise forms.ValidationError('Please provide a valid phone number.')
 
-        # return the cleaned phone number
         return data
 
     def error_list(self):
