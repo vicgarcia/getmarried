@@ -34,8 +34,8 @@
             "coordinates": [-87.903601, 41.978362]
         },
         "properties": {
-            "title": "O\"Hare Blue Line",
-            "description": "1000 O\"Hare Drive<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=110'>transitchicago.com</a>",
+            "title": "O'Hare Blue Line",
+            "description": "1000 O'Hare Drive<br/><a target='_blank' href='http://www.transitchicago.com/travel_information/station.aspx?StopId=110'>transitchicago.com</a>",
             "marker-color": "#5998c5",
             "marker-size": "medium",
             "marker-symbol": "rail"
