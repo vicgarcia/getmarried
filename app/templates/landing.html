@@ -353,11 +353,11 @@
                 if (response.error) {
                     var stripe_error;
                     if (!card.number) {
-                        stripe_error = '<p>Please provide a valid card number</p>';
+                        stripe_error = '<p>Please provide a valid card number.</p>';
                     } else if (response.error.message == 'Missing required param: card[exp_year].') {
-                        stripe_error = '<p>Please provide a valid expiration date</p>';
+                        stripe_error = '<p>Please provide a valid expiration date.</p>';
                     } else if (response.error.message == 'Could not find payment information') {
-                        stripe_error = '<p>Please provide a valid card number</p>';
+                        stripe_error = '<p>Please provide a valid card number.</p>';
                     } else {
                         stripe_error = '<p>' + response.error.message + '</p>';
                     }
