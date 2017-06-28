@@ -41,7 +41,7 @@ else:
                 'class': 'logging.FileHandler',
                 'filename': os.path.join(BASE_DIR, 'getmarried.log'),
                 'maxBytes': 1024 * 1024 * 50,
-                'backupCount' 10,
+                'backupCount': 10,
             },
         },
         'loggers': {
@@ -108,22 +108,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-# use sqlite for development, mysql for production
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# use sqlite for development
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+
+# use mysql for production
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': '',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+        }
     }
-}
 
 MAPBOX = {
     'token': '',
