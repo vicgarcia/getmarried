@@ -3,6 +3,15 @@ $(document).ready(function() {
     /* select box choice color */
     $('#attending').change(function() { $(this).css('color', '#000'); });
 
+    /* show guests field when relevant */
+    $('#attending').change(function() {
+        if ($(this).val() == 'true') {
+            $('#guests').removeClass('hidden-field');
+        } else {
+            $('#guests').addClass('hidden-field');
+        }
+    })
+
     /* setup map */
     var map = L.mapbox.map('map', 'mapbox.streets').setView([41.995293, -87.6573157], 11),
         layer = L.mapbox.featureLayer().loadURL('/static/markers.json').addTo(map);

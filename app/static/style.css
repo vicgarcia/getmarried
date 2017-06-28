@@ -160,6 +160,10 @@ input[type=submit]:hover {
   padding-bottom: 2px !important;
 }
 
+.hidden-field {
+  display: none;
+}
+
 /* rsvp form */
 
 #rsvp-wrap {
