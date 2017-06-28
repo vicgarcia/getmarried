@@ -10,6 +10,9 @@ db.sqlite3
 # exclude .backup files
 *.backup
 
+# exclude .log files
+*.log
+
 # exclude collected static files
 static/*
 

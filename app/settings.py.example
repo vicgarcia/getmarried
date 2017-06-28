@@ -10,6 +10,49 @@ ALLOWED_HOSTS = [ 'gertieandvicgetmarried.com' ]
 # use True for development
 DEBUG = False
 
+# in development, log to the console using level DEBUG
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }
+
+# otherwise, log to file using level INFO
+else:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'getmarried.log'),
+                'maxBytes': 1024 * 1024 * 50,
+                'backupCount' 10,
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'INFO',
+                'propagate': True,
+            },
+        },
+    }
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
