@@ -4,9 +4,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = ''
 
-ALLOWED_HOSTS = [ 'gertieandvicgetmarried.dev' ]
+# use .dev for development, setup "dns" in /etc/hosts
+ALLOWED_HOSTS = [ 'gertieandvicgetmarried.com' ]
 
-DEBUG = True
+# use True for development
+DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,10 +65,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+# use sqlite for development, mysql for production
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
     }
 }
 
