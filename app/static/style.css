@@ -203,6 +203,10 @@ input[type=submit]:hover {
   width: 80px !important;
 }
 
+#gift-amount {
+  margin-bottom: 20px;
+}
+
 #gift-submit {
   margin-top: 20px;
 }
