@@ -54,7 +54,7 @@ a:hover {
 
 /* two column layout in content panels */
 
-.content-inner {
+.inner {
   max-width: 800px;
   margin: 0 auto;
   font-family: 'Indie Flower', cursive;
@@ -62,20 +62,24 @@ a:hover {
   overflow: hidden
 }
 
-.left {
-  width: 50%;
-  float: left;
-  max-width: 375px;
+.wide {
+  width: 380px;
+  padding: 0 30px 0 30px;
   margin: 0 auto;
-  padding: 0 5px 0 5px;
+}
+
+.narrow {
+  width: 300px;
+  padding: 0 30px 0 30px;
+  margin: 0 auto;
+}
+
+.left {
+  float: left;
 }
 
 .right {
-  width: 50%;
   float: right;
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 5px 0 5px;
 }
 
 /* forms */
@@ -232,24 +236,18 @@ input[type=submit]:hover {
     background-position: 35% 50%;
   }
 
-  .content-inner {
+  .inner {
     width: 100%;
   }
 
-  .left {
+  .narrow, .wide {
     width: 92%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 0 30px 0;
-    text-align: center;
-    float: none;
+    padding: 0 0 20px 0;
   }
 
-  .right {
-    width: 92%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 0 0 0;
+  .left, .right  {
     text-align: center;
     float: none;
   }
@@ -268,7 +266,7 @@ input[type=submit]:hover {
 
   #map {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
     height: 300px;
   }
 
