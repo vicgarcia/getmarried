@@ -16,8 +16,6 @@ db.sqlite3
 # exclude collected static files
 static/*
 
-# exclude edited configuration files
-app/development.py
-app/production.py
+# exclude configuration file
 app/settings.py
 
