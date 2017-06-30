@@ -268,6 +268,7 @@ input[type=submit]:hover {
 
   #rsvp-wrap {
     margin: 0;
+    min-height: 470px;
   }
 
   #rsvp-wrap h2 {
