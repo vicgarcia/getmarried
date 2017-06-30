@@ -180,7 +180,7 @@ input[type=submit]:hover {
   margin: 0;
 }
 
-/* mapbox element */
+/* map element */
 
 #map {
   margin: 30px 0 30px 0;
@@ -236,6 +236,8 @@ input[type=submit]:hover {
 
 @media all and (max-width: 850px) {
 
+  /* paralax & content panels */
+
   .panel.parallax {
     background-attachment: scroll;
   }
@@ -244,13 +246,15 @@ input[type=submit]:hover {
     background-position: 35% 50%;
   }
 
+  /* one column layout in content panels */
+
   .inner {
     width: 100%;
   }
 
   .narrow, .wide {
     width: 92%;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto;
     padding: 0 0 20px 0;
   }
@@ -260,6 +264,8 @@ input[type=submit]:hover {
     float: none;
   }
 
+  /* rsvp form */
+
   #rsvp-wrap {
     margin: 0;
   }
@@ -268,15 +274,21 @@ input[type=submit]:hover {
     padding: 90px 0 10px 0;
   }
 
-  #gift-wrap {
-    margin: 0;
-  }
+  /* map element */
 
   #map {
     width: 90%;
     margin: 0 auto 0 auto;
     height: 300px;
   }
+
+  /* gift form */
+
+  #gift-wrap {
+    margin: 0;
+  }
+
+  /* mobile responsive styles */
 
   .mobile-element {
     display: unset;
