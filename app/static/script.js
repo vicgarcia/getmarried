@@ -62,7 +62,7 @@ $(document).ready(function() {
             } else {
                 var payload = {
                     token: response.id,
-                    csrfmiddlewaretoken: $('#gift-rsvp').val(),
+                    csrfmiddlewaretoken: $('#gift-csrf').val(),
                     amount: $('#gift-amount').val(),
                     name: $('#gift-name').val(),
                     email: $('#gift-email').val(),
