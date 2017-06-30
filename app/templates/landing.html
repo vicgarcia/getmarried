@@ -110,6 +110,7 @@
                             <input id="card" type="text" placeholder="card number" />
                             <input id="exp" type="text" placeholder="mm/yyyy" />
                             <input id="cvc" type="text" placeholder="cvc" />
+                            <input id="gift-csrf" type="hidden" value="{{ csrf_token }}" />
                             <input id="gift-submit" type="submit" value="submit" />
                         </form>
                         <div id="gift-feedback" class="feedback">
