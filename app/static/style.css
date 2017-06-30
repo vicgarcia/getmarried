@@ -268,7 +268,7 @@ input[type=submit]:hover {
 
   #rsvp-wrap {
     margin: 0;
-    min-height: 470px;
+    min-height: 460px;
   }
 
   #rsvp-wrap h2 {
@@ -287,6 +287,7 @@ input[type=submit]:hover {
 
   #gift-wrap {
     margin: 0;
+    min-height: 550px;
   }
 
   /* mobile responsive styles */
