@@ -1,5 +1,6 @@
 import json
 import stripe
+import decimal
 
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -44,7 +45,8 @@ def rsvp(request):
 
 def _convert_amount_for_stripe(amount):
     ''' convert decimal value from form to int for stripe '''
-    return int( str(amount).replace('.', '') )
+    amount_as_string = '{0:.2f}'.format(amount)
+    return int( amount_as_string.replace('.', '') )
 
 
 def gift(request):
