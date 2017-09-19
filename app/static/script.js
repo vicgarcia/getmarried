@@ -20,7 +20,7 @@ $(document).ready(function() {
     map.scrollWheelZoom.disable();
 
     /* form handling for rsvp */
-    $('#rsvp-form').submit(function() {
+    $('#rsvp-form').submit(function(event) {
         event.preventDefault();
         $('#rsvp-feedback').html('');
         $.post('/rsvp/', $('#rsvp-form').serialize(), function(resp) {
@@ -37,7 +37,7 @@ $(document).ready(function() {
     });
 
     /* form handling for gift payment */
-    $('#gift-form').submit(function() {
+    $('#gift-form').submit(function(event) {
         event.preventDefault();
         $('#gift-feedback').html('');
         var card = {
