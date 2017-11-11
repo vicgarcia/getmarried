@@ -1,6 +1,7 @@
 import json
 import stripe
 import decimal
+import datetime
 
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -25,11 +26,21 @@ def landing(request):
         })
 
 
+def _rsvp_are_closed():
+    ''' accept rsvps until oct 21 2017 '''
+    last_day = datetime.date(2017, 10, 21)
+    today = datetime.date.today()
+    return today > last_day
+
+
 def rsvp(request):
     ''' accept rsvp form submit via ajax '''
     if request.method == 'POST':
         form = RSVPForm(request.POST)
         if form.is_valid():
+            if _rsvp_are_closed():
+                messages = [ 'RSVP are no longer being accepted.' ]
+                return JsonResponse({'success': False, 'messages': messages})
             rsvp = form.save()
             if rsvp.attending:
                 message = IS_ATTENDING_MESSAGE
@@ -49,12 +60,22 @@ def _convert_amount_for_stripe(amount):
     return int( amount_as_string.replace('.', '') )
 
 
+def _gifts_are_closed():
+    ''' accept gifts up until nov 12 '''
+    last_day = datetime.date(2017, 11, 12)
+    today = datetime.date.today()
+    return today > last_day
+
+
 def gift(request):
     ''' accept gift form submit via ajax '''
     if request.method == 'POST':
         form = GiftForm(request.POST)
         errors = []
         if form.is_valid():
+            if _gifts_are_closed():
+                messages = [ 'Gifts are no longer being accepted.' ]
+                return JsonResponse({'success': False, 'messages': messages})
             gift = form.save()
             stripe.api_key = settings.STRIPE['private_key']
             try:
