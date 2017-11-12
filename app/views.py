@@ -36,11 +36,11 @@ def _rsvp_are_closed():
 def rsvp(request):
     ''' accept rsvp form submit via ajax '''
     if request.method == 'POST':
+        if _rsvp_are_closed():
+            messages = [ 'RSVP are no longer being accepted.' ]
+            return JsonResponse({'success': False, 'messages': messages})
         form = RSVPForm(request.POST)
         if form.is_valid():
-            if _rsvp_are_closed():
-                messages = [ 'RSVP are no longer being accepted.' ]
-                return JsonResponse({'success': False, 'messages': messages})
             rsvp = form.save()
             if rsvp.attending:
                 message = IS_ATTENDING_MESSAGE
@@ -70,12 +70,12 @@ def _gifts_are_closed():
 def gift(request):
     ''' accept gift form submit via ajax '''
     if request.method == 'POST':
+        if _gifts_are_closed():
+            message = [ 'Gifts are no longer being accepted.' ]
+            return JsonResponse({'success': False, 'messages': messages})
         form = GiftForm(request.POST)
         errors = []
         if form.is_valid():
-            if _gifts_are_closed():
-                messages = [ 'Gifts are no longer being accepted.' ]
-                return JsonResponse({'success': False, 'messages': messages})
             gift = form.save()
             stripe.api_key = settings.STRIPE['private_key']
             try:
