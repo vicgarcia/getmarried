@@ -3,7 +3,6 @@ from django.contrib.auth.models import User, Group
 from .models import *
 
 
-
 class RSVPAdmin(admin.ModelAdmin):
     list_display = ( 'name', 'attending', 'guests', 'phone', 'timestamp' )
     fields = ( 'name', 'phone', 'attending', 'guests', 'note', 'timestamp' )
@@ -21,6 +20,7 @@ admin.site.register(Gift, GiftAdmin)
 
 
 admin.site.unregister(Group)
+
 
 admin.site.unregister(User)
 

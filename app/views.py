@@ -19,7 +19,7 @@ NOT_ATTENDING_MESSAGE = "Thank you for letting us know you won't be able to make
 
 
 def landing(request):
-    ''' render html landing page '''
+    """ render html landing page """
     return render(request, 'landing.html', {
             'stripe_public_key': settings.STRIPE['public_key'],
             'mapbox_api_token': settings.MAPBOX['token'],
@@ -34,7 +34,7 @@ def _rsvp_are_closed():
 
 
 def rsvp(request):
-    ''' accept rsvp form submit via ajax '''
+    """ accept rsvp form submit via ajax """
     if request.method == 'POST':
         if _rsvp_are_closed():
             messages = [ 'RSVP are no longer being accepted.' ]
@@ -55,7 +55,7 @@ def rsvp(request):
 
 
 def _convert_amount_for_stripe(amount):
-    ''' convert decimal value from form to int for stripe '''
+    """ convert decimal value from form to int for stripe """
     amount_as_string = '{0:.2f}'.format(amount)
     return int( amount_as_string.replace('.', '') )
 
@@ -68,7 +68,7 @@ def _gifts_are_closed():
 
 
 def gift(request):
-    ''' accept gift form submit via ajax '''
+    """ accept gift form submit via ajax """
     if request.method == 'POST':
         if _gifts_are_closed():
             message = [ 'Gifts are no longer being accepted.' ]
@@ -101,7 +101,7 @@ def gift(request):
 
 @csrf_exempt
 def sms(request):
-    ''' accept an incoming sms message and forward it to me & gertie '''
+    """ accept an incoming sms message and forward it to me & gertie """
     if request.method == 'POST':
         try:
             text = request.POST['Text']
