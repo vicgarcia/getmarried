@@ -3,7 +3,7 @@ Description=getMarried
 After=network.target
 
 [Service]
-User=vicg4rcia
+User=getmarried
 Group=www-data
 Restart=on-failure
 WorkingDirectory=/opt/getmarried
