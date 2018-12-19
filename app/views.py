@@ -1,6 +1,7 @@
 import json
 import stripe
 import decimal
+import datetime
 
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -18,16 +19,26 @@ NOT_ATTENDING_MESSAGE = "Thank you for letting us know you won't be able to make
 
 
 def landing(request):
-    ''' render html landing page '''
+    """ render html landing page """
     return render(request, 'landing.html', {
             'stripe_public_key': settings.STRIPE['public_key'],
             'mapbox_api_token': settings.MAPBOX['token'],
         })
 
 
+def _rsvp_are_closed():
+    ''' accept rsvps until oct 21 2017 '''
+    last_day = datetime.date(2017, 10, 21)
+    today = datetime.date.today()
+    return today > last_day
+
+
 def rsvp(request):
-    ''' accept rsvp form submit via ajax '''
+    """ accept rsvp form submit via ajax """
     if request.method == 'POST':
+        if _rsvp_are_closed():
+            messages = [ 'RSVP are no longer being accepted.' ]
+            return JsonResponse({'success': False, 'messages': messages})
         form = RSVPForm(request.POST)
         if form.is_valid():
             rsvp = form.save()
@@ -44,14 +55,24 @@ def rsvp(request):
 
 
 def _convert_amount_for_stripe(amount):
-    ''' convert decimal value from form to int for stripe '''
+    """ convert decimal value from form to int for stripe """
     amount_as_string = '{0:.2f}'.format(amount)
     return int( amount_as_string.replace('.', '') )
 
 
+def _gifts_are_closed():
+    ''' accept gifts up until nov 12 '''
+    last_day = datetime.date(2017, 11, 12)
+    today = datetime.date.today()
+    return today > last_day
+
+
 def gift(request):
-    ''' accept gift form submit via ajax '''
+    """ accept gift form submit via ajax """
     if request.method == 'POST':
+        if _gifts_are_closed():
+            message = [ 'Gifts are no longer being accepted.' ]
+            return JsonResponse({'success': False, 'messages': messages})
         form = GiftForm(request.POST)
         errors = []
         if form.is_valid():
@@ -80,7 +101,7 @@ def gift(request):
 
 @csrf_exempt
 def sms(request):
-    ''' accept an incoming sms message and forward it to me & gertie '''
+    """ accept an incoming sms message and forward it to me & gertie """
     if request.method == 'POST':
         try:
             text = request.POST['Text']

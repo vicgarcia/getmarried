@@ -10,29 +10,29 @@ class RSVPForm(forms.ModelForm):
         fields = [ 'name', 'attending', 'guests', 'phone', 'note' ]
 
     name = forms.CharField(
-            error_messages={
-                'required': 'Please provide your name.',
-                'max_length': 'Please limit name to 250 characters.',
-            }
-        )
+        error_messages={
+            'required': 'Please provide your name.',
+            'max_length': 'Please limit name to 250 characters.',
+        }
+    )
 
     phone = forms.CharField(
-            max_length=None,
-            error_messages={
-                'required': 'Please provide a phone number.',
-            }
-        )
+        max_length=None,
+        error_messages={
+            'required': 'Please provide a phone number.',
+        }
+    )
 
     guests = forms.IntegerField(
-            required=False,
-            error_messages={
-                'invalid': 'Please provide a number of guests.',
-            }
-        )
+        required=False,
+        error_messages={
+            'invalid': 'Please provide a number of guests.',
+        }
+    )
 
     attending = forms.BooleanField(
-            required=False
-        )
+        required=False
+    )
 
     def clean(self):
         ''' override the clean method for special handling for the attending field
@@ -131,24 +131,24 @@ class GiftForm(forms.ModelForm):
         )
 
     email = forms.EmailField(
-            error_messages={
-                'max_length': 'Please limit email address to 250 characters.',
-                'required': 'Please provide your email address.',
-                'invalid': 'Please provide a valid email address.',
-            }
-        )
+        error_messages={
+            'max_length': 'Please limit email address to 250 characters.',
+            'required': 'Please provide your email address.',
+            'invalid': 'Please provide a valid email address.',
+        }
+    )
 
     amount = forms.DecimalField(
-            max_value=1000.00,
-            min_value=10.00,
-            error_messages={
-                'min_value': 'Please provide an amount over $10.',
-                'max_value': 'Please provide an amount below $1000.',
-                'max_decimal_places': 'Please specify gift amount with 2 decimal places.',
-                'required': 'Please provide a gift amount.',
-                'invalid': 'Please provide a valid gift amount.',
-            }
-        )
+        max_value=1000.00,
+        min_value=10.00,
+        error_messages={
+            'min_value':          'Please provide an amount over $10.',
+            'max_value':          'Please provide an amount below $1000.',
+            'max_decimal_places': 'Please specify gift amount with 2 decimal places.',
+            'required':           'Please provide a gift amount.',
+            'invalid':            'Please provide a valid gift amount.',
+        }
+    )
 
     def error_list(self):
         ''' return a flat list of errors for use in ajax form '''

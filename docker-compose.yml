@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: getmarried
+      MYSQL_PASSWORD: getmarried
+      MYSQL_DATABASE: getmarried
+
+  django:
+    build:
+      context: ./
+      dockerfile: ./docker/django/Dockerfile
+    ports:
+      - "8000:8000"
+    command: /code/docker/django/start.sh
+    volumes:
+      - .:/code
+    depends_on:
+      - mysql
