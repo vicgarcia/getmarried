@@ -4,17 +4,17 @@ A simple Django application I built as the website for my wedding.
 We used the website to ...
 
 
-Collect RSVPs via a form, send confirmation text messages via Plivo.
+Collect RSVPs via a form, send confirmation text messages via [Plivo](https://www.plivo.com/)
 
 ![rsvp screenshot](https://github.com/vicgarcia/getmarried/raw/master/screenshots/top-screenshot.png)
 
 
-Displayed a Mapbox widget to show the venue location, local hotels, and public transit.
+Displayed a [Mapbox](https://www.mapbox.com) widget to show the venue location, local hotels, and public transit
 
 ![mapbox widget](https://github.com/vicgarcia/getmarried/raw/master/screenshots/middle-screenshot.png)
 
 
-Integrated with Stripe to accept cash gifts via credit card.
+Integrated with [Stripe](https://stripe.com) to accept cash gifts via credit card
 
 ![stripe form](https://github.com/vicgarcia/getmarried/raw/master/screenshots/bottom-screenshot.png)
 
